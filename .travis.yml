@@ -4,7 +4,7 @@ services:
 env:
   global:
     - GIT_SHA=$(git rev-parse HEAD)
-    - GIT_LATEST_TAG="$(git tag | grep -E '^v([0-9]+)\.([0-9]+)\.([0-9]+)' | sort -V)""
+    - GIT_LATEST_TAG="$(git tag | grep -E '^v([0-9]+)\.([0-9]+)\.([0-9]+)' | sort -V)"
     - APP_VERSION=$GIT_LATEST_TAG+$TRAVIS_BUILD_NUMBER
     - CLOUDSDK_CORE_DISABLE_PROMPTS=1
 before_install:
