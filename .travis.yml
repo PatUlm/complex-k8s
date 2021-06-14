@@ -4,8 +4,13 @@ services:
 env:
   global:
     - GIT_SHA=$(git rev-parse HEAD)
+    - GIT_LATEST_TAG=$(git tag | grep -E '^v([0-9]+)\.([0-9]+)\.([0-9]+)' | sort -V)
+    - APP_VERSION=$GIT_LATEST_TAG+$TRAVIS_BUILD_NUMBER
     - CLOUDSDK_CORE_DISABLE_PROMPTS=1
 before_install:
+  - echo $GIT_SHA
+  - echo $GIT_LATEST_TAG
+  - echo $APP_VERSION
   - openssl aes-256-cbc -K $encrypted_9f3b5599b056_key -iv $encrypted_9f3b5599b056_iv -in service-account.json.enc -out service-account.json -d
   - curl https://sdk.cloud.google.com | bash > /dev/null;
   - source ~/google-cloud-sdk/path.bash.inc
@@ -20,8 +25,8 @@ before_install:
 script:
   - docker run -e CI=true pulmer75/client-test npm test -- --coverage
 
-deploy:
-  provider: script
-  script: bash ./deploy.sh
-  on:
-    branch: master
+#deploy:
+#  provider: script
+#  script: bash ./deploy.sh
+#  on:
+#    branch: master
