@@ -15,8 +15,9 @@ before_install:
   - gcloud components update kubectl
   - gcloud auth activate-service-account --key-file service-account.json
   - gcloud config set project complex-k8s-312215
-  - gcloud config set compute/zone europe-west3
-  - gcloud container clusters get-credentials complex-autopilot-cluster
+  - gcloud config set compute/zone europe-west3-a
+  - gcloud config set compute/region europe-west3
+  - gcloud container clusters get-credentials complex-autopilot-cluster --region=europe-west3
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker build -t pulmer75/client-test -f ./client/Dockerfile.dev ./client
 
