@@ -9,7 +9,7 @@ docker push pulmer75/complex-server:$APP_VERSION
 docker push pulmer75/complex-worker:latest
 docker push pulmer75/complex-worker:$APP_VERSION
 
-#kubectl apply -f k8s
-#kubectl set image deployments/client-deployment server=pulmer75/complex-client
-#kubectl set image deployments/server-deployment server=pulmer75/complex-server
-#kubectl set image deployments/worker-deployment server=pulmer75/complex-worker
+kubectl apply -f k8s
+kubectl set image deployments/client-deployment server=pulmer75/complex-client
+kubectl set image deployments/server-deployment server=pulmer75/complex-server
+kubectl set image deployments/worker-deployment server=pulmer75/complex-worker
