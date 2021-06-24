@@ -8,7 +8,7 @@ const App = () => (
   <Router>
     <div className="App">
       <header className="App-header">
-        <Link className="App-link" to="/">Fib Calculator v3</Link>
+        <Link className="App-link" to="/">Fib Calculator on KUBERNETES!</Link>
         <Link className="App-link" to="/otherpage">Other Page</Link>
       </header>
       <div className="Container">
