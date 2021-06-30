@@ -56,3 +56,11 @@
 kubectl delete -f k8s/
 kubectl delete namespace ingress-nginx
 ```
+
+## Development
+
+### Getting started
+
+```bash
+skaffold dev
+```
